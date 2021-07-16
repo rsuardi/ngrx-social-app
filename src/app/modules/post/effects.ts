@@ -5,6 +5,7 @@ import { switchMap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { PostActionTypes } from "./actionTypes";
 import { LoadPostsError, LoadPostsSuccess } from "./actions";
+import { LoadPostErrorResponse, LoadPostSuccessResponse } from "./services/models";
 
 @Injectable()
 export class PostEffects {
@@ -18,8 +19,8 @@ export class PostEffects {
         ofType(PostActionTypes.LOAD_POSTS),
         switchMap(() =>
             this.postService.getPosts().pipe(
-                map((posts) => new LoadPostsSuccess(posts)),
-                catchError(error => of(new LoadPostsError(error)))
+                map((posts: LoadPostSuccessResponse[]) => new LoadPostsSuccess(posts)),
+                catchError((error: LoadPostErrorResponse) => of(new LoadPostsError(error)))
             )
         )
     );

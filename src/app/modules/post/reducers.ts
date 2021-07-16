@@ -3,7 +3,13 @@ import { PostActions } from "./actions";
 import { Post } from "./models/post";
 import { PostActionTypes as ActionTypes } from './actionTypes';
 
-export const initialState: Post[] = [];
+export const initialState: {
+    loading: boolean,
+    posts: []
+} = {
+    loading: true,
+    posts: []
+};
 
 export const PostReducer = (state = initialState, action: PostActions) => {
 
@@ -17,13 +23,13 @@ export const PostReducer = (state = initialState, action: PostActions) => {
             return {
                 ...state,
                 loading: false,
-                payload: action.payload
+                posts: action.posts
             }
         case ActionTypes.LOAD_POSTS_ERROR:
             return {
                 ...state,
                 loading: false,
-                payload: null,
+                posts: null,
                 error: action.payload
             }
         case ActionTypes.GET_POST:

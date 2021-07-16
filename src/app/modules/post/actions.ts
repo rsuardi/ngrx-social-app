@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { Action, createAction } from '@ngrx/store';
 import { PostActionTypes as ActionTypes } from './actionTypes';
 import {
     LoadPostSuccessResponse,
@@ -18,7 +18,7 @@ export class LoadPosts implements Action {
 
 export class LoadPostsSuccess implements Action {
     readonly type = ActionTypes.LOAD_POSTS_SUCCESS;
-    public constructor(public payload: LoadPostSuccessResponse) { }
+    public constructor(public posts: LoadPostSuccessResponse[]) { }
 }
 
 export class LoadPostsError implements Action {

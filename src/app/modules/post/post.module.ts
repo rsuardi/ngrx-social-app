@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { HttpClient } from '@angular/common/http';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
 import { EffectsModule } from '@ngrx/effects';
 import { PostReducer, PostEffects } from './'
+import { PostService } from './services/post.service';
 
 @NgModule({
     declarations: [
@@ -17,16 +17,11 @@ import { PostReducer, PostEffects } from './'
     ],
     imports: [
         CommonModule,
-        HttpClient,
-        NgbModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgxPaginationModule,
-        // StoreModule.forRoot({}),
-        // StoreModule.forFeature('post', PostReducer),
-        // EffectsModule.forRoot([]),
-        // EffectsModule.forFeature([PostEffects])
+        StoreModule.forRoot({}),
+        StoreModule.forFeature('post', PostReducer),
+        EffectsModule.forRoot([]),
+        EffectsModule.forFeature([PostEffects])
     ],
-    providers: [],
+    providers: [PostService],
 })
 export class PostModule { }

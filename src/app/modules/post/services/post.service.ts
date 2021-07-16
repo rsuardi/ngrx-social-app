@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { LoadPostRequest } from "./models";
-import { LoadPostsSuccess } from "../actions";
+import { LoadPostErrorResponse, LoadPostRequest, LoadPostSuccessResponse } from "./models";
 import { catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { PostModule } from "../post.module";
 
 @Injectable()
 export class PostService {
@@ -25,8 +25,8 @@ export class PostService {
         }
     }
 
-    getPosts(request: LoadPostRequest = null) {
-        return this.http.get<LoadPostsSuccess>(this.API.getPosts.url).pipe(catchError((error: any) => throwError(error.message)));
+    getPosts(request: LoadPostRequest = null): Observable<LoadPostSuccessResponse[]> {
+        return this.http.get<LoadPostSuccessResponse[]>(this.API.getPosts.url).pipe(catchError((error) => throwError(error.message)));
     }
 
     getPost(id: number) {

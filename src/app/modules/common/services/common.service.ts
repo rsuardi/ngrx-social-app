@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
+import { AppCommonModule } from "../app-common.module";
 
-@Injectable()
+@Injectable({
+    providedIn: AppCommonModule
+})
 export class CommonService {
 
 }
