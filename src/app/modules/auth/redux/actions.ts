@@ -1,49 +1,68 @@
-import { Action, createAction } from '@ngrx/store';
-import { AuthActionTypes as ActionTypes } from './actionTypes';
+import { Action } from '@ngrx/store';
 import {
-    LoginSuccessResponse,
-    LoginErrorResponse,
-    LogoutSuccessResponse,
-    LogoutErrorResponse,
+    SignInErrorResponse, SignInSuccessResponse, SignOutErrorResponse, SignOutSuccessResponse
 } from '../models';
+import { SignUpErrorResponse, SignUpRequest, SignUpSuccessResponse } from '../models/sign-UP-request';
+import { AuthActionTypes as ActionTypes } from './actionTypes';
 
 
-export class Login implements Action {
-    readonly type = ActionTypes.LOGIN;
+export class SignIn implements Action {
+    readonly type = ActionTypes.SIGN_IN;
 }
 
-export class LoginSuccess implements Action {
-    readonly type = ActionTypes.LOGIN_SUCCESS;
-    public constructor(public payload: LoginSuccessResponse) { }
+export class SignInSuccess implements Action {
+    readonly type = ActionTypes.SIGN_IN_SUCCESS;
+    public constructor(public payload: SignInSuccessResponse) { }
 }
 
-export class LoginError implements Action {
-    readonly type = ActionTypes.LOGIN_ERROR;
-    public constructor(public payload: LoginErrorResponse) { }
+export class SignInError implements Action {
+    readonly type = ActionTypes.SIGN_IN_ERROR;
+    public constructor(public payload: SignInErrorResponse) { }
 }
 
 //--------------------------------------------------------------------------------------
 
-export class Logout implements Action {
-    readonly type = ActionTypes.LOGOUT;
+export class SignOut implements Action {
+    readonly type = ActionTypes.SIGN_OUT;
 }
 
-export class LogoutSuccess implements Action {
-    readonly type = ActionTypes.LOGOUT_SUCCESS;
-    public constructor(public payload: LogoutSuccessResponse) { }
+export class SignOutSuccess implements Action {
+    readonly type = ActionTypes.SIGN_OUT_SUCCESS;
+    public constructor(public payload: SignOutSuccessResponse) { }
 }
 
-export class LogoutError implements Action {
-    readonly type = ActionTypes.LOGOUT_ERROR;
-    public constructor(public payload: LogoutErrorResponse) { }
+export class SignOutError implements Action {
+    readonly type = ActionTypes.SIGN_OUT_ERROR;
+    public constructor(public payload: SignOutErrorResponse) { }
 }
 
 
 //--------------------------------------------------------------------------------------
 
-export type AuthActions = Login
-    | LoginSuccess
-    | LoginError
-    | Logout
-    | LogoutSuccess
-    | LogoutError
+export class SignUp implements Action {
+    readonly type = ActionTypes.SIGN_UP;
+    public constructor(public payload: SignUpRequest) { }
+}
+
+export class SignUpSuccess implements Action {
+    readonly type = ActionTypes.SIGN_UP_SUCCESS;
+    public constructor(public payload: SignUpSuccessResponse) { }
+}
+
+export class SignUpError implements Action {
+    readonly type = ActionTypes.SIGN_UP_ERROR;
+    public constructor(public payload: SignUpErrorResponse) { }
+}
+
+
+//--------------------------------------------------------------------------------------
+
+export type AuthActions = SignIn
+    | SignInSuccess
+    | SignInError
+    | SignOut
+    | SignOutSuccess
+    | SignOutError
+    | SignUp
+    | SignUpSuccess
+    | SignUpError

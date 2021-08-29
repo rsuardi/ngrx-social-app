@@ -1,0 +1,90 @@
+<!-- Pageloader -->
+<!-- <div class="pageloader"></div>
+<div class="infraloader is-active"></div> -->
+<div class="navbar navbar-v1 is-inline-flex is-transparent no-shadow no-background is-landing is-hidden-mobile">
+    <div class="container is-desktop">
+        <div class="navbar-brand">
+            <a routerLink="/" routerLinkActive="active" class="navbar-item">
+                <img class="logo" src="assets/img/logo/friendkit-bold.svg" alt="">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+
+                <div class="navbar-item">
+                    <div class="navbar-item">
+                        <a routerLink="/auth/sign-in">Login</a>
+                    </div>
+                    <a id="signup-button" routerLink="/auth/sign-up"
+                        class="button is-cta is-solid primary-button raised">
+                        Sign Up
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<nav class="navbar mobile-navbar is-landing is-hidden-desktop" aria-label="main navigation">
+    <!-- Brand -->
+    <div class="navbar-brand">
+        <a class="navbar-item" routerLink="/" routerLinkActive>
+            <img class="dark-mobile-logo" src="assets/img/logo/friendkit.svg" alt="">
+            <img class="light-mobile-logo" src="assets/img/logo/friendkit-white.svg" alt="">
+        </a>
+
+        <!-- Mobile menu toggler icon -->
+        <div class="navbar-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Navbar mobile menu -->
+    <div class="navbar-menu">
+        <!-- Account -->
+        <div class="navbar-item has-dropdown">
+
+            <!-- Mobile Dropdown -->
+            <div class="navbar-dropdown">
+                <a routerLink="/auth/sign-in" class="button is-fullwidth is-solid accent-button">Login</a>
+                <a routerLink="/auth/sign-up" class="button is-fullwidth is-solid accent-button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="landing-wrapper">
+
+    <div id="friendkit-demo-landing" class="hero is-fullheight landing-hero-wrapper">
+        <div id="particles-js"></div>
+        <div class="hero-body">
+            <div class="container is-desktop">
+                <div class="columns landing-caption is-vcentered">
+                    <div class="column is-7">
+                        <img src="assets/img/illustrations/characters/friends.svg" alt="">
+                    </div>
+                    <div class="column is-5">
+                        <h2>SocialNetwork.</h2>
+                        <h3>Your favorite Social Media app</h3>
+                        <!-- <div class="buttons">
+                            <a href="#landing-start" class="button">Login</a>
+                            <button id="tour-start" class="button">Sign Up</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-light-medium">
+        <div class="container is-desktop">
+            <div class="footer-head">
+                <div class="columns footer-body">
+                </div>
+                <div class="footer-copyright has-text-centered">
+                    <p>&copy; 2021 | <a href="javascript:void(0)">Ruben Suardi</a> | All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

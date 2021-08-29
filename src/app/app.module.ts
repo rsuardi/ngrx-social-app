@@ -20,12 +20,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule,
+    SharedModule.forRoot(),
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    PostModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

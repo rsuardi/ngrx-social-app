@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddPostComponent } from './modules/post/components/add-post/add-post.component';
-import { ListPostsComponent } from './modules/post/components/list-posts/list-posts.component';
+import { LadingPageComponent } from './modules/shared/components/lading-page/lading-page.component';
+import { NotFoundComponent } from './modules/shared/components/not-found/not-found.component';
 
 
 const routes: Routes = [
   {
-    path: 'some',
-    component: ListPostsComponent
+    path: '',
+    component: LadingPageComponent,
   },
   {
-    path: 'another',
-    component: AddPostComponent
-  }
+    path: 'auth',
+    loadChildren: () => import(`./modules/auth/auth.module`).then(module => module.AuthModule)
+  },
+  {
+    path: 'core',
+    loadChildren: () => import(`./modules/core/core.module`).then(module => module.CoreModule)
+  },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
