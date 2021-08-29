@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { LoadPostErrorResponse, LoadPostRequest, LoadPostSuccessResponse } from "./models";
+import { LoadPostErrorResponse, LoadPostRequest, LoadPostSuccessResponse } from "../models";
 import { catchError } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
 import { PostModule } from "../post.module";

@@ -1,16 +1,1 @@
-<button (click)="callService()">Click me!</button>
-<!-- <div *ngFor="let post of posts$ | async">
-    {{ post.id }} {{post.title}}
-</div> -->
-<table *ngIf="(posts$ | async)?.length > 0" class="table">
-    <thead>
-        <tr>
-            <th *ngFor="let field of fieldsDefinition">{{field}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let post of posts$ | async">
-            <td *ngFor="let field of fieldsDefinition">{{post[field]}}</td>
-        </tr>
-    </tbody>
-</table>
+<router-outlet></router-outlet>

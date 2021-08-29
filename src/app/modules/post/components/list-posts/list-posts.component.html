@@ -1,1 +1,14 @@
-<p>list-posts works!</p>
+<button (click)="callService()">Click me!</button>
+<button (click)="go()">another</button>
+<table *ngIf="(posts$ | async)?.length > 0" class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let field of fieldsDefinition">{{field}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts$ | async">
+            <td *ngFor="let field of fieldsDefinition">{{post[field]}}</td>
+        </tr>
+    </tbody>
+</table>

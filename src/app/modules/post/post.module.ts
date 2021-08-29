@@ -7,7 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ListPostsComponent } from './components/list-posts/list-posts.component';
 import { EffectsModule } from '@ngrx/effects';
-import { PostReducer, PostEffects } from './'
+import { PostReducer, PostEffects } from './redux'
 import { PostService } from './services/post.service';
 
 @NgModule({

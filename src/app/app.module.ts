@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AppCommonModule } from './modules/common/app-common.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { PostModule } from './modules/post/post.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
@@ -14,13 +14,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    AppCommonModule,
+    SharedModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
