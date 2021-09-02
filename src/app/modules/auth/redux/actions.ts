@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import {
-    SignInErrorResponse, SignInSuccessResponse, SignOutErrorResponse, SignOutSuccessResponse
+    SignInErrorResponse, SignInRequest, SignInSuccessResponse, SignOutErrorResponse, SignOutSuccessResponse
 } from '../models';
 import { SignUpErrorResponse, SignUpRequest, SignUpSuccessResponse } from '../models/sign-UP-request';
 import { AuthActionTypes as ActionTypes } from './actionTypes';
@@ -8,6 +8,7 @@ import { AuthActionTypes as ActionTypes } from './actionTypes';
 
 export class SignIn implements Action {
     readonly type = ActionTypes.SIGN_IN;
+    public constructor(public payload: SignInRequest) { }
 }
 
 export class SignInSuccess implements Action {
