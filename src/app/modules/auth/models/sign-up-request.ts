@@ -1,7 +1,10 @@
 import { ErrorResponse, SuccessResponse } from "../../shared/models";
 
-export class SignUpRequest {
-
+export interface SignUpRequest {
+    first_name: string;
+    last_name: string;
+    username: string;
+    password: string;
 }
 
 export class SignUpSuccessResponse extends SuccessResponse {
