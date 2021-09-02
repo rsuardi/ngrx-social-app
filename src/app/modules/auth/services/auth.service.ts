@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { SignInRequest, SignInSuccessResponse, SignOutSuccessResponse, SignUpRequest, SignUpSuccessResponse } from '../models';
 
 @Injectable({
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    public jwtHelper: JwtHelperService
+    public jwtHelper: JwtHelperService,
+    private localStorageService: LocalStorageService
   ) {
     this.API = {
       signIn: { url: '/sign-in', method: 'post' },
@@ -38,7 +40,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+    const token = this.localStorageService.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);
   }
 }

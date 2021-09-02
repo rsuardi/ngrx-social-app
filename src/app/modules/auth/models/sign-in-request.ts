@@ -6,7 +6,14 @@ export class SignInRequest {
 }
 
 export class SignInSuccessResponse extends SuccessResponse {
-
+    _id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    username: string;
+    password: string;
+    __v: number;
+    token: string;
 }
 
 export class SignInErrorResponse extends ErrorResponse {
