@@ -22,8 +22,8 @@ export class AuthService {
     private localStorageService: LocalStorageService
   ) {
     this.API = {
-      signIn: { url: '/sign-in', method: 'post' },
-      signUp: { url: '/sign-up', method: 'post' },
+      signIn: { url: '/auth/authenticate', method: 'post' },
+      signUp: { url: '/auth/register', method: 'post' },
     }
   }
 
@@ -40,7 +40,11 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
+    let isAuthenticated = false;
     const token = this.localStorageService.getItem('token');
-    return !this.jwtHelper.isTokenExpired(token);
+    if (token && token != 'undefined') {
+      isAuthenticated = !this.jwtHelper.isTokenExpired(token);
+    }
+    return isAuthenticated;
   }
 }

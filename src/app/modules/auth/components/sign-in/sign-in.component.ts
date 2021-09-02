@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
   signInForm: FormGroup;
 
   constructor(
-    private store: Store<{ user: SignInSuccessResponse }>,
+    private store: Store<{ auth: any }>,
     private router: Router,
     private localStorageService: LocalStorageService
   ) { }
@@ -39,8 +39,11 @@ export class SignInComponent implements OnInit {
   }
 
   subscribeToSignInSuccessResponse(): void {
-    this.store.select(state => state.user).subscribe(user => {
-      this.localStorageService.setItem("token", user.token);
+    this.store.select(state => state.auth).subscribe(_state => {
+      if (_state && _state.user && _state.user.token) {
+        this.localStorageService.setItem("token", _state.user.token);
+        this.router.navigate(['/core/feed']);
+      }
     }, error => {
       console.log(error);
     });

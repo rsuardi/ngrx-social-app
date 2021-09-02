@@ -17,10 +17,10 @@ import { PostService } from './services/post.service';
     ],
     imports: [
         CommonModule,
-        StoreModule.forRoot({}),
-        StoreModule.forFeature('post', PostReducer),
-        EffectsModule.forRoot([]),
-        EffectsModule.forFeature([PostEffects])
+        // StoreModule.forRoot({}),
+        // StoreModule.forFeature('post', PostReducer),
+        // EffectsModule.forRoot([]),
+        // EffectsModule.forFeature([PostEffects])
     ],
     providers: [PostService],
 })

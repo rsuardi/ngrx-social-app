@@ -10,13 +10,15 @@ const routes: Routes = [
   {
     path: 'feed',
     component: FeedComponent,
-    outlet: 'main-tabs',
+    //outlet: 'main-tabs',
+    data: { requiresLogin: true },
     canActivate: [AuthGuard]
   },
   {
     path: 'friends',
     component: FriendsComponent,
-    outlet: 'main-tabs',
+    //outlet: 'main-tabs',
+    data: { requiresLogin: true },
     canActivate: [AuthGuard]
   }
 ];

@@ -22,8 +22,8 @@ export class AuthEffects {
     @Effect()
     signIn$ = this.actions$.pipe(
         ofType(AuthActionTypes.SIGN_IN),
-        switchMap((actionPayload: SignInRequest) =>
-            this.authService.signIn(actionPayload)
+        switchMap((action: { payload: SignInRequest }) =>
+            this.authService.signIn(action.payload)
                 .pipe(
                     map((payload: SignInSuccessResponse) => new SignInSuccess(payload)),
                     catchError((error: SignInErrorResponse) => of(new SignInError(error)))

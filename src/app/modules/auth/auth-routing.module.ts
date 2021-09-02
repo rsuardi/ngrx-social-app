@@ -3,12 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignOutComponent } from './components/sign-out/sign-out.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AuthGuard, LoginGuard } from './guards/auth.guard';
+import { OutsideAppGuard } from './guards/outside-app.guard';
 
 
 const routes: Routes = [
   {
     path: 'sign-in',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate: [OutsideAppGuard]
   },
   {
     path: 'sign-out',
@@ -16,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    component: SignUpComponent
+    component: SignUpComponent,
+    canActivate: [OutsideAppGuard]
   }
 ];
 

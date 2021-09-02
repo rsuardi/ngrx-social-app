@@ -11,7 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ApiInterceptor } from './modules/shared/interceptors/api.interceptor';
+import { AuthService } from './modules/auth/services';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +33,19 @@ import { ApiInterceptor } from './modules/shared/interceptors/api.interceptor';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
       //autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["http://localhost:4200"],
+        //disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
     }),
   ],
   providers: [
@@ -36,7 +53,12 @@ import { ApiInterceptor } from './modules/shared/interceptors/api.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true,
-    }
+    },
+    JwtHelperService,
+    AuthService
+  ],
+  exports: [
+
   ],
   bootstrap: [AppComponent]
 })
