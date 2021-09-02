@@ -22,7 +22,9 @@ import { FakeNavComponent } from './components/fake-nav/fake-nav.component';
     providers: [],
     exports: [
         NotFoundComponent,
-        FakeNavComponent
+        FakeNavComponent,
+        HeaderComponent,
+        FooterComponent
     ]
 })
 export class SharedModule {
