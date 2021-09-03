@@ -29,12 +29,10 @@ export class SignOut implements Action {
 
 export class SignOutSuccess implements Action {
     readonly type = ActionTypes.SIGN_OUT_SUCCESS;
-    public constructor(public payload: SignOutSuccessResponse) { }
 }
 
 export class SignOutError implements Action {
     readonly type = ActionTypes.SIGN_OUT_ERROR;
-    public constructor(public payload: SignOutErrorResponse) { }
 }
 
 

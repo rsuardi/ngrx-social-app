@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.subscribeToSignInSuccessResponse();
+    this.subscribeToSignInResponse();
     this.initSignInForm();
   }
 
@@ -38,8 +38,8 @@ export class SignInComponent implements OnInit {
     this.store.dispatch(new AuthActions.SignIn(formData));
   }
 
-  subscribeToSignInSuccessResponse(): void {
-    this.store.select(state => state.auth).subscribe(_state => {
+  subscribeToSignInResponse(): void {
+    this.store.select((state: any) => state.auth).subscribe(_state => {
       if (_state && _state.user && _state.user.token) {
         this.localStorageService.setItem("token", _state.user.token);
         this.router.navigate(['/core/feed']);

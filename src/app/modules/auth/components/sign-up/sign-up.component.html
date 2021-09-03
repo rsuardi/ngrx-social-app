@@ -18,7 +18,7 @@
                                             <label>First Name</label>
                                             <div class="control">
                                                 <input type="text" class="input" placeholder="Enter your first name"
-                                                    formControName="first_name">
+                                                    formControlName="first_name" autocomplete="none">
                                             </div>
                                         </div>
                                     </div>
@@ -27,7 +27,7 @@
                                             <label>Last Name</label>
                                             <div class="control">
                                                 <input type="text" class="input" placeholder="Enter your last name"
-                                                    formControName="last_name">
+                                                    formControlName="last_name" autocomplete="none">
                                             </div>
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                                             <label>Email</label>
                                             <div class="control">
                                                 <input type="email" class="input" placeholder="Enter your email address"
-                                                    formControName="email">
+                                                    formControlName="email" autocomplete="none">
                                             </div>
                                         </div>
                                     </div>
@@ -45,16 +45,16 @@
                                             <label>Username</label>
                                             <div class="control">
                                                 <input type="text" class="input" placeholder="Enter your username"
-                                                    formControName="username">
+                                                    formControlName="username" autocomplete="none">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="column is-12">
+                                    <div class="column is-12 mb-3">
                                         <div class="field">
                                             <label>Password</label>
                                             <div class="control">
                                                 <input type="password" class="input" placeholder="Enter your password"
-                                                    formControName="password">
+                                                    formControlName="password" autocomplete="new-password">
                                             </div>
                                         </div>
                                     </div>
@@ -62,8 +62,8 @@
                             </div>
 
                             <div class="buttons mt-2">
-                                <button type="submit" class="button is-solid primary-button is-fullwidth raised"
-                                    [disabled]="!signUpForm.valid">Create Account</button>
+                                <button type="submit" class="button is-solid primary-button is-fullwidth raised">Create
+                                    Account</button>
                             </div>
 
                             <div class="account-link has-text-centered">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </form>
-
+                    {{signUpForm.value | json}}
                 </div>
             </div>
         </div>

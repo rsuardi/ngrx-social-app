@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignOutComponent } from "./components/sign-out/sign-out.component";
 import { AuthRoutingModule } from "./auth-routing.module";
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SharedModule } from '../shared/shared.module';
@@ -13,7 +12,6 @@ import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     SignInComponent,
-    SignOutComponent,
     SignUpComponent,
   ],
   imports: [
@@ -21,11 +19,15 @@ import { EffectsModule } from '@ngrx/effects';
     AuthRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('auth', AuthReducer),
-    EffectsModule.forFeature([AuthEffects]),
+    //StoreModule.forFeature('auth', AuthReducer),
+    //EffectsModule.forFeature([AuthEffects]),
   ],
   providers: [
 
+  ],
+  exports: [
+    SignInComponent,
+    SignUpComponent,
   ]
 })
 export class AuthModule { }

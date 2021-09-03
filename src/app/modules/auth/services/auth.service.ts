@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
 import { SignInRequest, SignInSuccessResponse, SignOutSuccessResponse, SignUpRequest, SignUpSuccessResponse } from '../models';
@@ -31,8 +31,10 @@ export class AuthService {
     return this.http.post<SignInSuccessResponse>(this.API.signIn.url, credentials).pipe(catchError((error) => throwError(error.message)));
   }
 
-  signOut(): void {
+  signOut(): Observable<any> {
     //TODO DISPATCH A SIGN_OUT ACTION FROM HERE 
+    return of(true);
+    //return this.http.post<any>('/auth/sign-out', {}).pipe(catchError((error) => throwError(error.message)));
   }
 
   signUp(request: SignUpRequest): Observable<SignUpSuccessResponse> {
@@ -44,6 +46,7 @@ export class AuthService {
     const token = this.localStorageService.getItem('token');
     if (token && token != 'undefined') {
       isAuthenticated = !this.jwtHelper.isTokenExpired(token);
+      if (!isAuthenticated) this.localStorageService.removeItem("token");
     }
     return isAuthenticated;
   }

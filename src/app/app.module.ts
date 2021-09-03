@@ -13,18 +13,32 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ApiInterceptor } from './modules/shared/interceptors/api.interceptor';
 import { AuthService } from './modules/auth/services';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { CommonModule } from '@angular/common';
+import { AuthEffects, AuthReducer } from './modules/auth/redux';
 
 
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
+
+export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function (state, action) {
+    console.log('state', state);
+    console.log('action', action);
+
+    return reducer(state, action);
+  };
+}
+
+export const metaReducers: MetaReducer<any>[] = environment.production ? [debug] : [];
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -33,8 +47,12 @@ export function tokenGetter() {
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    // StoreModule.forRoot({}),
+    // EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot({}),
+    StoreModule.forFeature('auth', AuthReducer, { metaReducers }),
     EffectsModule.forRoot([]),
+    EffectsModule.forFeature([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

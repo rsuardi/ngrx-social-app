@@ -31,23 +31,25 @@ export class AuthEffects {
         )
     );
 
-    // @Effect()
-    // signOut$ = this.actions$.pipe(
-    //     ofType(AuthActionTypes.SIGN_OUT),
-    //     switchMap(() =>
-    //         this.authService.signOut()
-    //             .pipe(
-    //                 map((payload: SignOutSuccessResponse) => new SignOutSuccess(payload)),
-    //                 catchError((error: SignOutErrorResponse) => of(new SignOutError(error)))
-    //             )
-    //     )
-    // );
+    @Effect()
+    signOut$ = this.actions$.pipe(
+        ofType(AuthActionTypes.SIGN_OUT),
+        switchMap((action) => {
+            console.log('action: ', action);
+
+            return this.authService.signOut()
+                .pipe(
+                    map(() => new SignOutSuccess()),
+                    catchError(() => of(new SignOutError()))
+                )
+        })
+    );
 
     @Effect()
     signUp$ = this.actions$.pipe(
         ofType(AuthActionTypes.SIGN_UP),
-        switchMap((payload: SignUpRequest) =>
-            this.authService.signUp(payload)
+        switchMap((action: { payload: SignUpRequest }) =>
+            this.authService.signUp(action.payload)
                 .pipe(
                     map((payload: SignUpSuccessResponse) => new SignUpSuccess(payload)),
                     catchError((error: SignUpErrorResponse) => of(new SignUpError(error)))
