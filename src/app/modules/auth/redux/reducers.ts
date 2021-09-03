@@ -5,9 +5,9 @@ import { AuthActionTypes as ActionTypes } from './actionTypes';
 
 export const initialState: {
     loading: boolean,
-    user?: SignInSuccessResponse,
+    user?: null,
     is_authenticated: boolean,
-    error?: SignInErrorResponse,
+    error?: null,
 } = {
     loading: true,
     user: null,

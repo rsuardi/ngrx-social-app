@@ -28,7 +28,8 @@ export class AuthService {
   }
 
   signIn(credentials: SignInRequest): Observable<SignInSuccessResponse> {
-    return this.http.post<SignInSuccessResponse>(this.API.signIn.url, credentials).pipe(catchError((error) => throwError(error.message)));
+    //return this.http.post<SignInSuccessResponse>(this.API.signIn.url, credentials).pipe(catchError((error) => throwError(error.message)));
+    return this.http.post<SignInSuccessResponse>(this.API.signIn.url, credentials);
   }
 
   signOut(): Observable<any> {

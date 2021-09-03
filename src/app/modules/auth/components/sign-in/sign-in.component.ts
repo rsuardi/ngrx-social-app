@@ -44,8 +44,10 @@ export class SignInComponent implements OnInit {
         this.localStorageService.setItem("token", _state.user.token);
         this.router.navigate(['/core/feed']);
       }
-    }, error => {
-      console.log(error);
+
+      if (_state && !_state.user && _state.error) {
+        alert(_state.error.error);
+      }
     });
   }
 }
